@@ -14,7 +14,7 @@
 			$Szklo_CH = mysqli_real_escape_string($conn, $_REQUEST['china']);
 			$Szklo_3MK = mysqli_real_escape_string($conn, $_REQUEST['3mk']);
 			$Szklo_SPP = mysqli_real_escape_string($conn, $_REQUEST['screenpro']);
-
+			$Uwagi = mysqli_real_escape_string($conn, $_REQUEST['uwagi']);
 			$UserID = 1;
 			
 			if ($Szklo_CH == "on" ){$Szklo_CH = "Tak";}else $Szklo_CH = "Nie";
@@ -49,7 +49,7 @@
 					$ProducentID = 9;
 					break;
 			}
-			$sql = "INSERT INTO modele (ProducentID,NazwaModelu,InnaNazwa,Cale,GsmArenaUrl,Szklo_CH,Szklo_3MK,Szklo_SPP,UserID) VALUES ('$ProducentID', '$NazwaModelu', '$InnaNazwa', '$Cale', '$GsmArenaUrl', '$Szklo_CH', '$Szklo_3MK', '$Szklo_SPP', '$UserID')";
+			$sql = "INSERT INTO modele (ProducentID,NazwaModelu,InnaNazwa,Cale,GsmArenaUrl,Szklo_CH,Szklo_3MK,Szklo_SPP,UserID,Uwagi) VALUES ('$ProducentID', '$NazwaModelu', '$InnaNazwa', '$Cale', '$GsmArenaUrl', '$Szklo_CH', '$Szklo_3MK', '$Szklo_SPP', '$UserID','$Uwagi')";
 
 			if(mysqli_query($conn, $sql))
 			{	

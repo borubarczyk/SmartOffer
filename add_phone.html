@@ -1,6 +1,4 @@
-<?php
-    include './dbh.php';
-?>
+
 	<!DOCTYPE html>
 	<html lang="pl-PL">
 
@@ -16,10 +14,10 @@
 
 	<body>
 		<header>
-			<div id="logo-wrap">
-				<a href="index.html"> <img src="img/logo7.png"> </a>
-			</div>
-			<nav> 
+			<nav>
+				<div id="logo-wrap">
+					<a href="index.html"> <img src="img/logo7.png"> </a>
+				</div> 
 				<a href="index.html" title="Strona Główna">SmartOffer</a> 
 				<a id="current-page" title="Dodaj model" href="phones.html">Telefony</a> 
 				<a title="Dodaj etui" href="case.html">Etui</a> 
@@ -72,6 +70,13 @@
 						<div class="input-group">
 							<label class="label">Inna nazwa</label>
 							<input class="input-style" type="text" name="InnaNazwa" autocomplete="off" spellcheck="false"> </div>
+					</div>
+				</div>
+				<div class="row-space">
+					<div id="col-uwagi">
+						<div class="input-group">
+							<label class="label">Uwagi</label>
+							<textarea class="input-style" type="text" autocomplete="off" name="uwagi" spellcheck="false" maxlength="512" ></textarea> </div>
 					</div>
 				</div>
 				<div class="row-space">
