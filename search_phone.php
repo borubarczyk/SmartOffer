@@ -2,9 +2,9 @@
     include './dbh.php';
     include_once './header.php';
 ?>
+    <selection class="main">
             <div class="wrapper">
                 <?php
-
                 if(isset($_GET['s']) && $_GET['s'] != ''){
                     $s = trim($_GET['s'],' ');
                         $limit = 10;
@@ -71,5 +71,6 @@
                 ?>
                 </div>
                 </div>
+                </selection>
         </body>
 </html>

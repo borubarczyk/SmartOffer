@@ -1,7 +1,8 @@
 <?php
     include_once './header.php';
 ?>
-		<div class="wrapper-input">
+	<selection class="main">
+	<div class="wrapper-input">
 			<form class="add-form" action="add_phone.php" method="post">
 				<div>
 					<p>Dodaj telefon do bazy</p>
@@ -75,5 +76,5 @@
 			</form>
 		</div>
 	</body>
-
+</selection>
 	</html>

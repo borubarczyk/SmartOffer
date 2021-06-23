@@ -1,45 +1,17 @@
 <?php
     include './dbh.php';
+    include_once './header.php';
 ?>
-<!DOCTYPE html>
-<html lang="pl-PL">
-    <head>
-        <meta charset="utf-8">
-        <title>Smart Offers</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="img/icon.ico" />
-        <script src="script.js"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <div id="logo-wrap">
-                <a href="index.html">
-                    <img src="img/logo7.png">
-                </a>
-            </div>
-            <nav >
-                <a href="index.html" title="Strona Główna">SmartOffer</a>
-                <a id="current-page" title="Dodaj model" href="phones.html">Telefony</a>
-                <a title="Dodaj etui"href="case.html">Etui</a>
-                <a title="Generator plików .csv i .tsv" href="offers.html">Generatory</a>
-                <a title="Zobacz ostatnie zmiany" href="logs.html">Logi</a>
-            </nav>
-            <div id="logout-wrapper">
-                <a href="index.html">Wyloguj -></a>
-            </div>
-        </header>
+        <section class="main">
             <div class="wrapper">
                 <?php
-
                 if(isset($_GET['s']) && $_GET['s'] != ''){
                     $s = trim($_GET['s'],' ');
                         $limit = 10;
-                        $query_string = ('SELECT TelefonID, NazwaProducenta, NazwaModelu, Cale, UserName, KiedyDodany, Szklo_CH, Szklo_3MK, Szklo_SPP FROM modele JOIN producenci ON modele.ProducentID = producenci.ProducentID JOIN users ON modele.UserID = users.UserID WHERE ');
-                        $query_string_super_short = $query_string.("NazwaModelu LIKE '%".$s."%' LIMIT ".$limit."" );
-                        $query_string_short = $query_string.("MATCH (NazwaModelu,InnaNazwa) AGAINST ('%".$s."%' WITH QUERY EXPANSION) LIMIT ".$limit."");
-                        $query_string .= "MATCH (NazwaModelu,InnaNazwa) AGAINST ('%".$s."%' IN BOOLEAN MODE) LIMIT ".$limit." ";
+                        $query_string = ('SELECT EtuiID, EtuiProducent, EtuiNazwa, EtuiSzklo_CH, EtuiSzklo_3MK, EtuiSzklo_SPP FROM etui WHERE ');
+                        $query_string_super_short = $query_string.("EtuiProducent OR EtuiNazwa LIKE '%".$s."%' LIMIT ".$limit."" );
+                        $query_string_short = $query_string.("MATCH (EtuiProducent,EtuiNazwa) AGAINST ('%".$s."%' WITH QUERY EXPANSION) LIMIT ".$limit."");
+                        $query_string .= "MATCH (EtuiProducent,EtuiNazwa) AGAINST ('%".$s."%' IN BOOLEAN MODE) LIMIT ".$limit." ";
 
                         $conn = mysqli_connect(db_server , db_username, db_password, db_name);
                         if($conn == false){
@@ -64,10 +36,11 @@
                             echo '<table class="table_results">
                             <tr>
                                 <th>ID</th>
+                                <th>Producent</th>
                                 <th>Model</th>
-                                <th></th></th>
-                                <th></th>
-                                <th></th>
+                                <th>Chiny</th>
+                                <th>3MK</th>
+                                <th>S.Pro+</th>
 
                             </tr>';
 
@@ -75,8 +48,12 @@
 
                                 echo
                                 '<tr>
-                                <td>'.$row['TelefonID'].'</td>
-                                <td>'.$row['NazwaModelu'].'</td>
+                                <td>'.$row['EtuiID'].'</td>
+                                <td>'.$row['EtuiProducent'].'</td>
+                                <td>'.$row['EtuiNazwa'].'</td>
+                                <td>'.$row['EtuiSzklo_CH'].'</td>
+                                <td>'.$row['EtuiSzklo_3MK'].'</td>
+                                <td>'.$row['EtuiSzklo_SPP'].'</td>
                                 <td class="buton-search-result"><button class="search-actions-buttons" id="info-icon"><img src="./img/basic-ui/svg/091-warning.svg" alt="info"></button></td>
                                 <td class="buton-search-result"><button class="search-actions-buttons" id="edit-icon"><img src="./img/basic-ui/svg/062-pencil.svg" alt="edit"></button></td>
                                 <td class="buton-search-result"><button class="search-actions-buttons" id="delete-icon"><img src="./img/basic-ui/svg/076-remove.svg" alt="delete"></button></td>
@@ -86,7 +63,7 @@
                             echo '</table>';
                         }
                         else{
-                            echo '<div class="search_info"><p>Znaleziono: <b>'.$result_counter.'</b></p>';
+                            echo '<div class="search_info"><p>Znaleziono: <b>'.$result_counter.'</b> </p>';
                             echo '<p>Szukana fraza: <b>'.$s.'</b></p></div>';
                             echo '<div class="search_info"><p id="bad_info">Nic nie znalazłem ... :( </p></div>';
                         }
@@ -97,5 +74,6 @@
                 ?>
                 </div>
                 </div>
+                </section>
         </body>
 </html>

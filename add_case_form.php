@@ -2,6 +2,7 @@
     include './dbh.php';
     include_once './header.php';
 ?>
+<section class="main">
 		<div class="wrapper-input">
 			<form class="add-form" action="add_case.php" method="post">
 				<div>
@@ -36,7 +37,14 @@
 					<div id="col-atrybuty">
 						<div class="input-group">
 							<label class="label">Atrybuty</label>
-							<input class="input-style" type="text" autocomplete="off" name="Atrybuty" minlength="3" spellcheck="false" required> </div>
+							<input class="input-style" type="text" autocomplete="off" name="Atrybuty" minlength="3" spellcheck="false" placeholder="Po każdym atrybucie użyj średnika" required > </div>
+					</div>
+				</div>
+				<div class="row-space">
+					<div id="col-uwagi">
+						<div class="input-group">
+							<label class="label">Uwagi</label>
+							<textarea class="input-style" type="text" autocomplete="off" name="Uwagi" spellcheck="false" maxlength="512" ></textarea> </div>
 					</div>
 				</div>
 				<div class="row-space">
@@ -59,6 +67,7 @@
 				</div>
 			</form>
 		</div>
-	</body>
-
+	</section>
+	
+</body>
 	</html>
