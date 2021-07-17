@@ -1,7 +1,4 @@
 <?php
-		include './dbh.php';
-        $conn = mysqli_connect(db_server , db_username, db_password, db_name);
-        
 		if($conn == false){
             die("Baza danych niedostępna" .mysqli_connect_error());
         }
@@ -17,50 +14,82 @@
 			$Uwagi = mysqli_real_escape_string($conn, $_REQUEST['uwagi']);
 			$UserID = 1;
 			
+			$NazwaModelu = trim(ucwords($NazwaModelu));
+			$Cale = str_replace("%.%",",",$Cale);
+
 			if ($Szklo_CH == "on" ){$Szklo_CH = "Tak";}else $Szklo_CH = "Nie";
 			if ($Szklo_3MK == "on"){$Szklo_3MK = "Tak";}else $Szklo_3MK = "Nie";
 			if ($Szklo_SPP == "on"){$Szklo_SPP = "Tak";}else $Szklo_SPP = "Nie";
+
 			switch ($ProducentID){
-				case "Xiaomi": 
+				case "Apple": 
 					$ProducentID = 1; 
 					break;
-				case "Samsung": 
+				case "Asus": 
 					$ProducentID = 2;
 					break; 
-				case "OnePlus": 
+				case "Blackview": 
 					$ProducentID = 3; 
 					break;
-				case "Oppo": 
+				case "Google": 
 					$ProducentID = 4; 
 					break;
-				case "Nokia": 
+				case "HTC": 
 					$ProducentID = 5; 
 					break;
-				case "Apple": 
+				case "Huawei": 
 					$ProducentID = 6; 
 					break;
-				case "Blackview": 
+				case "LG": 
 					$ProducentID = 7; 
 					break;
-				case "Asus": 
+				case "Lenovo": 
 					$ProducentID = 8; 
 					break;
-				case "Vivo": 
+				case "Meizu": 
 					$ProducentID = 9;
 					break;
-			}
+				case "Nokia": 
+					$ProducentID = 10;
+					break;
+				case "OnePlus": 
+					$ProducentID = 11;
+					break;
+				case "Oppo": 
+					$ProducentID = 12;
+					break;
+				case "Realme": 
+					$ProducentID = 13;
+					break;
+				case "Samsung": 
+					$ProducentID = 14;
+					break;
+				case "Sony": 
+					$ProducentID = 15;
+					break;
+				case "Vivo": 
+					$ProducentID = 16;
+					break;
+				case "Xiaomi": 
+					$ProducentID = 17;
+					break;
+				case "ZTE": 
+					$ProducentID = 18;
+					break;
+				}
+				
 			$sql = "INSERT INTO modele (ProducentID,NazwaModelu,InnaNazwa,Cale,GsmArenaUrl,Szklo_CH,Szklo_3MK,Szklo_SPP,UserID,Uwagi) VALUES ('$ProducentID', '$NazwaModelu', '$InnaNazwa', '$Cale', '$GsmArenaUrl', '$Szklo_CH', '$Szklo_3MK', '$Szklo_SPP', '$UserID','$Uwagi')";
 
 			if(mysqli_query($conn, $sql))
 			{	
-				header("Location: add_phone.html");
+				header("Location: add_phone_form.php");
 			} 
 			else{
 				if(mysqli_errno($conn) == 1062)
 				{
 					echo "Dany model już istnieje !";
 					
-					header("Location: add_phone.html");
+					header("Location: add_phone_form.php");
 				}
 				else
 				echo "ERROR: $sql. " . mysqli_error($conn);

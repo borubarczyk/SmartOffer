@@ -1,8 +1,7 @@
 <?php
-    include './dbh.php';
     include_once './header.php';
 ?>
-        <section class="main">
+        <section>
             <div class="wrapper">
                 <?php
                 if(isset($_GET['s']) && $_GET['s'] != ''){
@@ -12,8 +11,6 @@
                         $query_string_super_short = $query_string.("EtuiProducent OR EtuiNazwa LIKE '%".$s."%' LIMIT ".$limit."" );
                         $query_string_short = $query_string.("MATCH (EtuiProducent,EtuiNazwa) AGAINST ('%".$s."%' WITH QUERY EXPANSION) LIMIT ".$limit."");
                         $query_string .= "MATCH (EtuiProducent,EtuiNazwa) AGAINST ('%".$s."%' IN BOOLEAN MODE) LIMIT ".$limit." ";
-
-                        $conn = mysqli_connect(db_server , db_username, db_password, db_name);
                         if($conn == false){
                             die("Baza danych niedostępna" .mysqli_connect_error());
                         }
@@ -29,7 +26,8 @@
                         }
                         $result_counter = mysqli_num_rows($query);
 
-                        if ($result_counter > 0){
+                        if ($result_counter > 0)
+                        {
 
                             echo '<div class="search_info"><p>Znaleziono: <b>'.$result_counter.'</b></p>';
                             echo '<p>Szukałeś: <b>'.$s.'</b></p></div><div class="result-wrapper">';
@@ -60,7 +58,7 @@
                                 </tr>';
                             }
 
-                            echo '</table>';
+                            echo '</table></div>';
                         }
                         else{
                             echo '<div class="search_info"><p>Znaleziono: <b>'.$result_counter.'</b> </p>';
@@ -73,7 +71,7 @@
 
                 ?>
                 </div>
-                </div>
                 </section>
-        </body>
-</html>
+<?php
+include_once './footer.php';
+?>

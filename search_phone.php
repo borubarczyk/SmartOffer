@@ -1,19 +1,16 @@
 <?php
-    include './dbh.php';
     include_once './header.php';
 ?>
-    <selection class="main">
+    <selection>
             <div class="wrapper">
                 <?php
                 if(isset($_GET['s']) && $_GET['s'] != ''){
                     $s = trim($_GET['s'],' ');
                         $limit = 10;
-                        $query_string = ('SELECT TelefonID, NazwaProducenta, NazwaModelu ,InnaNazwa, Cale FROM modele JOIN producenci ON modele.ProducentID = producenci.ProducentID JOIN users ON modele.UserID = users.UserID WHERE ');
+                        $query_string = ('SELECT TelefonID, NazwaProducenta, NazwaModelu ,InnaNazwa, Cale , GsmArenaUrl FROM modele JOIN producenci ON modele.ProducentID = producenci.ProducentID JOIN users ON modele.UserID = users.UserID WHERE ');
                         $query_string_super_short = $query_string.("NazwaModelu LIKE '%".$s."%' LIMIT ".$limit."" );
                         $query_string_short = $query_string.("MATCH (NazwaModelu,InnaNazwa) AGAINST ('%".$s."%' WITH QUERY EXPANSION) LIMIT ".$limit."");
                         $query_string .= "MATCH (NazwaModelu,InnaNazwa) AGAINST ('%".$s."%' IN BOOLEAN MODE) LIMIT ".$limit." ";
-
-                        $conn = mysqli_connect(db_server , db_username, db_password, db_name);
                         if($conn == false){
                             die("Baza danych niedostępna" .mysqli_connect_error());
                         }
@@ -35,7 +32,7 @@
                             echo '<p>Szukałeś: <b>'.$s.'</b></p></div><div class="result-wrapper">';
                             echo '<table class="table_results">
                             <tr>
-                                <th>ID</th>
+                                <th>LP</th>
                                 <th>Model</th>
                                 <th>Cale</th>
                                 <th></th>
@@ -43,15 +40,21 @@
                                 <th></th>
 
                             </tr>';
-
+                            $LP = 0;
                             while($row = mysqli_fetch_assoc($query)){
-
+                                ++$LP;
+                                $url = $row['GsmArenaUrl'];
+                                $name = $row['NazwaModelu'];
+                                if(empty($url))
+                                {
+                                    $url = "https://www.gsmarena.com/res.php3?sSearch=".$name;
+                                }
                                 echo
                                 '<tr>
-                                <td>'.$row['TelefonID'].'</td>
-                                <td>'.$row['NazwaModelu'].'</td>
+                                <td>'.$LP.'</td>
+                                <td>'.$name.'</td>
                                 <td>'.$row['Cale'].'"</td>
-                                <td class="buton-search-result"><button class="search-actions-buttons" id="info-icon"><img src="./img/basic-ui/svg/091-warning.svg" alt="info"></button></td>
+                                <td class="buton-search-result"><button class="search-actions-buttons" id="info-icon"><a href="'.$url.'" target="_blank"><img src="./img/basic-ui/svg/091-warning.svg" alt="info"></a></button></td>
                                 <td class="buton-search-result"><button class="search-actions-buttons" id="edit-icon"><img src="./img/basic-ui/svg/062-pencil.svg" alt="edit"></button></td>
                                 <td class="buton-search-result"><button class="search-actions-buttons" id="delete-icon"><img src="./img/basic-ui/svg/076-remove.svg" alt="delete"></button></td>
                                 </tr>';
@@ -72,5 +75,6 @@
                 </div>
                 </div>
                 </selection>
-        </body>
-</html>
+<?php
+include_once './footer.php';
+?>

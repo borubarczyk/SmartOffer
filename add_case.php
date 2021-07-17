@@ -1,18 +1,15 @@
 <?php
-		include './dbh.php';
-        $conn = mysqli_connect(db_server , db_username, db_password, db_name);
-        
 		if($conn == false){
             die("Baza danych niedostępna" .mysqli_connect_error());
         }
 		else				
-			$EtuiProducent = mysqli_real_escape_string($conn, $_REQUEST['Producent']);
-			$NazwaEtui = mysqli_real_escape_string($conn, $_REQUEST['NazwaEtui']);
-			$Atrybuty = mysqli_real_escape_string($conn, $_REQUEST['Atrybuty']);
+			$EtuiProducent = trim(mysqli_real_escape_string($conn, $_REQUEST['Producent']));
+			$NazwaEtui = trim(mysqli_real_escape_string($conn, $_REQUEST['NazwaEtui']));
+			$Atrybuty = trim(mysqli_real_escape_string($conn, $_REQUEST['Atrybuty']));
 			$Szklo_CH = mysqli_real_escape_string($conn, $_REQUEST['china']);
 			$Szklo_3MK = mysqli_real_escape_string($conn, $_REQUEST['3mk']);
 			$Szklo_SPP = mysqli_real_escape_string($conn, $_REQUEST['screenpro']);
-			$Uwagi = mysqli_real_escape_string($conn, $_REQUEST['Uwagi']);
+			$Uwagi = trim(mysqli_real_escape_string($conn, $_REQUEST['Uwagi']));
 
 			$UserID = 1;
 			
@@ -41,5 +38,5 @@
 				else
 				echo "ERROR: $sql. " . mysqli_error($conn);
 			}
-
+			
 ?>
