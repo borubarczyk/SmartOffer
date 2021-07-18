@@ -1,7 +1,7 @@
 <?php
     include_once './header.php';
 ?>
-    <selection>
+    <section>
             <div class="wrapper">
                 <?php
                 if(isset($_GET['s']) && $_GET['s'] != ''){
@@ -70,7 +70,7 @@
                 ?>
                 </div>
                 </div>
-                </selection>
+                </section>
 <?php
 include_once './footer.php';
 ?>
