@@ -44,7 +44,7 @@ include './functions/functions.php';
         <meta charset="utf-8">
         <title>Smart Offers </title>
         <link rel="stylesheet" href="./css/style.css">
-        <link rel="shortcut icon" href="./img/icon.ico" />
+        <link rel="shortcut icon" href="./img/cube.svg">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     </head>
