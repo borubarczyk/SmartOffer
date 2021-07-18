@@ -11,10 +11,6 @@
                         $query_string_super_short = $query_string.("EtuiProducent OR EtuiNazwa LIKE '%".$s."%' LIMIT ".$limit."" );
                         $query_string_short = $query_string.("MATCH (EtuiProducent,EtuiNazwa) AGAINST ('%".$s."%' WITH QUERY EXPANSION) LIMIT ".$limit."");
                         $query_string .= "MATCH (EtuiProducent,EtuiNazwa) AGAINST ('%".$s."%' IN BOOLEAN MODE) LIMIT ".$limit." ";
-                        if($conn == false){
-                            die("Baza danych niedostępna" .mysqli_connect_error());
-                        }
-                        else
                         if (strlen($s) < 3){
                             $query = mysqli_query($conn,$query_string_super_short);
                         }

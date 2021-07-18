@@ -1,8 +1,4 @@
-<?php
-		if($conn == false){
-            die("Baza danych niedostępna" .mysqli_connect_error());
-        }
-		else				
+<?php				
 			$EtuiProducent = trim(mysqli_real_escape_string($conn, $_REQUEST['Producent']));
 			$NazwaEtui = trim(mysqli_real_escape_string($conn, $_REQUEST['NazwaEtui']));
 			$Atrybuty = trim(mysqli_real_escape_string($conn, $_REQUEST['Atrybuty']));

@@ -1,7 +1,6 @@
 <?php
     include_once './header.php';
 ?>
-
 <section>
 		<div class="wrapper-input">
 			<form class="add-form" action="add_case.php" method="post">
@@ -15,7 +14,7 @@
 						<select class="selection" name="Producent" required>
 							
 							<?php
-							$file_path = './seria_etui.txt';
+							$file_path = './data/seria_etui.txt';
 							$file_array = file($file_path);
 							foreach ($file_array as $producent){
 								echo '<option ' ;

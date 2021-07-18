@@ -1,8 +1,4 @@
-<?php
-		if($conn == false){
-            die("Baza danych niedostępna" .mysqli_connect_error());
-        }
-		else				
+<?php				
 			$ProducentID = mysqli_real_escape_string($conn, $_REQUEST['Producent']);
 			$NazwaModelu = mysqli_real_escape_string($conn, $_REQUEST['NazwaModelu']);
 			$Cale = mysqli_real_escape_string($conn, $_REQUEST['Cale']);

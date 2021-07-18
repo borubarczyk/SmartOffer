@@ -14,7 +14,7 @@
 							<select class="selection" name="Producent" autofocusss tabindex="1" required>
 							
 							<?php
-							$file_path = './producenci_telefony.txt';
+							$file_path = './data/producenci_telefony.txt';
 							$file_array = file($file_path);
 							foreach ($file_array as $producent){
 								echo '<option value="'.trim($producent).'" > '.$producent.' </option>';

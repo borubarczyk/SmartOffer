@@ -1,7 +1,7 @@
 <?php
 session_start();
-include './dbh.php';
-include './functions.php';
+include './functions/dbh.php';
+include './functions/functions.php';
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -11,13 +11,15 @@ include './functions.php';
         if(!empty($username) && !empty($password) && !is_numeric($username)){
 
             $query = "SELECT * FROM users WHERE UserName = '$username' LIMIT 1";
+            $update_query = "UPDATE users SET date = CURRENT_TIMESTAMP WHERE UserName = '$username'";
+            mysqli_query($conn,$update_query);
             $result = mysqli_query($conn,$query);
-            
             if($result)
             {
                 if($result && mysqli_num_rows($result) > 0)
                 {
                     $user_data = mysqli_fetch_assoc($result);
+                    
                     if($user_data['UserPassword'] === $password)
                     {
                         $_SESSION['UserID'] = $user_data['UserID'];
@@ -25,7 +27,6 @@ include './functions.php';
                         die;
                     }
                     else{
-                        echo '<script>alert("Niepoprawne dane !")</script>';
                         header("Location: error.html");
                     }
                 }
@@ -39,18 +40,21 @@ include './functions.php';
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-        <script src="./script.js"></script>
+        <script src="./scripts/script.js"></script>
         <meta charset="utf-8">
         <title>Smart Offers </title>
-        <link rel="stylesheet" href="./style.css">
-        <link rel="shortcut icon" href="img/icon.ico" />
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="shortcut icon" href="./img/icon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     </head>
     <body>
     <div class="se-pre-con"></div>
         <header>
-            <p class="login-page">Smart Offer | Login</p>
+            <nav >
+                <img src="./img/cube.svg">
+                <p title="Smart Offer" id="login-page-link" >SmartOffer | Login</p>
+            </nav>
         </header>
     <section>
         <div class="wrapper-input-small">
