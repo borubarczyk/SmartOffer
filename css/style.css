@@ -125,7 +125,7 @@ nav>img:hover{
 .main-wrapper {
   margin: auto;
   text-align: center;
-  width: 60%;
+  width: 75%;
   margin-bottom: 20vmax;
 }
 .main-wrapper>h1 {
@@ -166,7 +166,7 @@ nav>img:hover{
 
 .wrapper {
   margin: auto;
-  min-width: 700px;
+  min-width: 840px;
   max-width: 50%;
   background-color: rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 30px 5px rgb(0 0 0 / 15%);
@@ -175,8 +175,6 @@ nav>img:hover{
   color: var(--main-color);
   font-size: 1.3rem;
   text-align: left;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 
 .wrapper-input,.wrapper-input-small {
@@ -188,8 +186,6 @@ nav>img:hover{
   border-radius: 20px;
   box-shadow: 0px 0px 30px 5px rgb(0 0 0 / 15%);
   -webkit-box-shadow: 0px 0px 30px 5px rgb(0 0 0 / 15%);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   transition: border-color .3s ease-in-out;
   padding: 40px;
 }
@@ -349,6 +345,7 @@ nav>img:hover{
   font-size: 1rem;
   font-weight: 600;
   padding-left: 2px;
+  display: block;
 }
 
 .input-style,.selection, .selection>option  {
@@ -367,7 +364,6 @@ nav>img:hover{
   transition: none;
   min-width: 100%;
   max-width: 100%;
-  min-height: 110px;
   max-height: 300px;
   padding:5px;
 }
@@ -492,7 +488,44 @@ input[class="input-style"]:focus:valid {
 
 #delete-icon:hover{
   filter: drop-shadow( 0px 0px 5px rgba(161, 24, 24, 0.9));
+}
 
+.info-page-general{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.info-page-sides>img{
+  height: 230px;
+  text-align: center;
+  margin:auto;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.info-page-sides{
+  text-align: left;
+  padding: 40px;
+  font-size: 1.3rem;
+}
+
+.info-page-sides:first-child{
+  border-right: 2px solid var(--main-color);
+  font-weight: 400;
+  text-align: center;
+}
+
+#settings-name{
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+#header-info{
+  font-weight: 300;
+  color: var(--main-color);
 }
 
 @media (max-height:900px)

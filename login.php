@@ -11,8 +11,8 @@ include './functions/functions.php';
         if(!empty($username) && !empty($password) && !is_numeric($username)){
 
             $query = "SELECT * FROM users WHERE UserName = '$username' LIMIT 1";
-            $update_query = "UPDATE users SET date = CURRENT_TIMESTAMP WHERE UserName = '$username'";
-            mysqli_query($conn,$update_query);
+            $query_date = "UPDATE users SET date = CURRENT_TIMESTAMP WHERE UserName = '$username'";
+            $query_correct_date = "UPDATE users SET date_correct = CURRENT_TIMESTAMP WHERE UserName = '$username'";
             $result = mysqli_query($conn,$query);
             if($result)
             {
@@ -23,10 +23,12 @@ include './functions/functions.php';
                     if($user_data['UserPassword'] === $password)
                     {
                         $_SESSION['UserID'] = $user_data['UserID'];
+                        mysqli_query($conn,$query_correct_date);
                         header("Location: index.php");
                         die;
                     }
                     else{
+                        mysqli_query($conn,$query_date);
                         header("Location: error.html");
                     }
                 }
