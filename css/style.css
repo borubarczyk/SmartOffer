@@ -50,6 +50,7 @@ header {
 }
 section{
   padding: 30px;
+  transform: scale(0.85);
 }
 
 footer{
@@ -397,17 +398,17 @@ input[class="input-style"]:focus:valid {
 .checkbox {
   vertical-align: middle;
   position: relative;
-  top: -4px;
+  top: -2px;
 }
 
 .box {
   color: var(--main-color);
-  font-size: 1.3rem;
+  font-size: 1.65rem;
 }
 
 .checkbox-cont>input {
-  height: 24px;
-  width: 24px;
+  height: 28px;
+  width: 28px;
   appearance: none;
   border: 2px solid rgba(102, 102, 102, 0.37);
   border-radius: 4px;
@@ -425,8 +426,8 @@ input[class="input-style"]:focus:valid {
   opacity: 0;
   visibility: hidden;
   position: relative;
-  left: -28px;
-  bottom: 4px;
+  left: -31px;
+  bottom: 1px;
 }
 
 .checkbox-cont>input:checked~span {
@@ -531,7 +532,7 @@ input[class="input-style"]:focus:valid {
 @media (max-height:900px)
 {
   section{
-  transform: scale(0.85);
+  /*transform: scale(0.85);*/
   }
 }
 @media (min-height: 1400px){
