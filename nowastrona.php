@@ -14,7 +14,10 @@ include_once './functions/sqlquerry.php';
         </header>
         <section>
             <?php
-            print_r(database_operations("select","users","*",NULL,NULL,NULL));
+            $data = database_operations("select","users","*",NULL,NULL,NULL);
+            display($data);
+            $data2 = database_operations("select","producenci","NazwaProducenta",NULL,'ProducentID = 4',5);
+            display($data2);
             ?>
         </section>
 
