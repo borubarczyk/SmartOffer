@@ -3,7 +3,7 @@
 ?>
 <section>
 		<div class="wrapper-input">
-			<form class="add-form" action="add_case.php" method="post">
+			<form class="add-form" action="./functions/add_case.php" method="post">
 				<div>
 					<p>Dodaj etui do bazy</p>
 				</div>

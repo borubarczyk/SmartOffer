@@ -1,4 +1,5 @@
 <?php
+
     function verify_login($conn){
     if(isset($_SESSION['UserID']))
     {
@@ -12,7 +13,7 @@
             return $user_data;
         }
     }
-    header("Location: login.php");
+    header("Location: ./login.php");
     die;
-}
+    }
 ?>

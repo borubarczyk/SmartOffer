@@ -1,9 +1,8 @@
 <?php
     session_start();
-    include './functions/dbh.php';
-    include './functions/functions.php';
-    include './functions/session.php';
-
+    include 'C:/xampp/htdocs/SmartOffer/functions/dbh.php';
+    include 'C:/xampp/htdocs/SmartOffer/functions/login_check.php';
+    include 'C:/xampp/htdocs/SmartOffer/functions/session_data.php';
 ?>
 <!DOCTYPE html>
 <html lang="pl-PL">

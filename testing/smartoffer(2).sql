@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 18 Lip 2021, 01:23
--- Wersja serwera: 10.4.19-MariaDB
--- Wersja PHP: 8.0.6
+-- Czas generowania: 28 Lip 2021, 21:14
+-- Wersja serwera: 10.4.20-MariaDB
+-- Wersja PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -140,18 +140,21 @@ INSERT INTO `producenci` (`ProducentID`, `NazwaProducenta`) VALUES
 
 CREATE TABLE `users` (
   `UserID` smallint(3) NOT NULL,
+  `FullName` text COLLATE utf8_polish_ci NOT NULL,
   `UserName` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL,
   `UserPassword` text COLLATE utf8_polish_ci NOT NULL,
   `UserMail` text COLLATE utf8_polish_ci NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date_correct` timestamp NOT NULL DEFAULT current_timestamp(),
+  `IP` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`UserID`, `UserName`, `UserPassword`, `UserMail`, `date`) VALUES
-(1, 'b.kaleta', 'admin', 'borys.youtab@gmail.com', '2021-07-17 22:43:16');
+INSERT INTO `users` (`UserID`, `FullName`, `UserName`, `UserPassword`, `UserMail`, `date`, `date_correct`, `IP`) VALUES
+(1, 'Borys Kaleta', 'b.kaleta', 'admin', 'borys.youtab@gmail.com', '2021-07-28 19:07:02', '2021-07-28 19:10:55', '0');
 
 --
 -- Indeksy dla zrzutów tabel

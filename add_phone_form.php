@@ -3,7 +3,7 @@
 ?>
 	<section>
 	<div class="wrapper-input">
-			<form class="add-form" action="add_phone.php" method="post">
+			<form class="add-form" action="./functions/add_phone.php" method="post">
 				<div>
 					<p>Dodaj telefon do bazy</p>
 				</div>
