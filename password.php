@@ -1,8 +1,3 @@
-<?php
-    include "./locations.php";
-    include AUTHENTICATION;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,39 +5,36 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
-        <link rel="shortcut icon" href="./assets/img/cube.svg">
         <meta name="author" content="" />
-        <title>Login - SmartOffer</title>
+        <title>Password Reset - SB Admin</title>
         <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/custom.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-light">
+    <body class="bg-primary">
         <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content" >
+            <div id="layoutAuthentication_content">
                 <main>
-                    <div class="container mt-5">
+                    <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-md-4">
+                            <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header d-flex"><img src="./assets/img/cube.svg" height="50px" class="m-3"><h3 class="font-weight-bold my-4 text-primary">SmartOffer</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Password Recovery</h3></div>
                                     <div class="card-body">
-                                        <form method="POST">
+                                        <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
+                                        <form>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputLogin" type="text" name="username" autocomplete="off" spellcheck="false" minlength="5"/>
-                                                <label for="inputLogin">Login</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" name="password" autocomplete="off" spellcheck="false" minlength="8"/>
-                                                <label for="inputPassword">Hasło</label>
+                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button class="btn cus-btn-primary fw-normal"><i class="fa-solid fa-right-to-bracket"></i>ZALOGUJ</button>
-                                                <a class="small" href="password.php">Niempamiętasz hasła?</a>
+                                                <a class="small" href="login.html">Return to login</a>
+                                                <a class="btn btn-primary" href="login.html">Reset Password</a>
                                             </div>
                                         </form>
                                     </div>
-
+                                    <div class="card-footer text-center py-3">
+                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +45,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; 2021-2022 Borys Kaleta</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
